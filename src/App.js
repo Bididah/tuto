@@ -28,8 +28,12 @@ const App = () => {
           placeholder="Search for Movies"
           value={title}
           onChange={(event) => {
-            console.log(1);
             setTitle(event.target.value);
+          }}
+          onKeyUp={(e) => {
+            if (e.code === "Enter") {
+              search(title);
+            }
           }}
         />
         <img
@@ -40,8 +44,8 @@ const App = () => {
           }}
         />
       </div>
-      {movies != undefined ? (
-        <div className="Container">
+      {movies !== undefined ? (
+        <div className="container">
           {movies.map((movie, index) => {
             return <Card key={index} movie={movie} />;
           })}
